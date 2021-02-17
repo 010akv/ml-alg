@@ -1,17 +1,8 @@
-from tensorflow.keras import datasets
 import matplotlib.pyplot as plt
-import argparse
+from tensorflow.keras import datasets
 
 TF_KERAS_DATASETS = [ds for ds in dir(datasets) if not ds.startswith('_')]
-CIFAR10_CLASS_NAMES = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
 
-
-def parse_my_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--ds_name',help='Name of the dataset to read')
-    parser.add_argument('--ds_source',help='Where to read this Dataset from? tf.keras.datasets/custom')
-    args = parser.parse_args()
-    return args
 
 class DatasetEverything:
     def __init__(self,ds_name, ds_source):
@@ -50,31 +41,6 @@ class DatasetEverything:
         plt.show()
 
 
-class CNNEverything:
-    def __init__(self,inp_shape, filt_sizes=[],
-                                kernel_sizes=[],\
-                                act ='relu',\
-                                use_batchnorm = False,\
-                                use_dropout = False
-                                ):
-        self.inp_shape = inp_shape #tuple - (x_size, y_size, channels) of images
-        self.filt_sizes = filt_sizes #list of ints, list len = num hidden blocks
-        self.kernel_sizes = kernel_sizes #list of tuple of ints, list len = num hidden blocks,tuple eg:(3,3)
-        self.act = act  # activation to use (default_relu)
-        self.use_batchnorm = use_batchnorm #by default, conv2D and max pool 2D will be added to every hidden block; use these to add other layers
-        self.use_dropout = use_dropout
-
-
-def main():
-    args = parse_my_args()
-    ds = DatasetEverything(args.ds_name, args.ds_source)
-    (train_images, train_labels), (test_images, test_labels) = ds.read_dataset() 
-    train_images, test_images = ds.normalize_imgs() # normalize pixel values to be between 0 and 1
-    ds.sneak_peek(CIFAR10_CLASS_NAMES)    
-
-
-if __name__=="__main__":
-    main()
 
 
 
