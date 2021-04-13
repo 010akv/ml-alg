@@ -1,0 +1,7 @@
+tensorflow
+tensorflow-io
+matplotlib
+IPython
+librosa
+bs4
+lxml
