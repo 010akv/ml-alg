@@ -1,5 +1,5 @@
 # GAN Composer - WIP
-- train a GAN to (hopefully) generate songs in the Tamil language
+- train a GAN to generate songs in the Tamil language
 
 ## Workflow
 - Crawl through movies and web scrape Tamil language mp3 songs from [friendstamilmp3](https://friendstamilmp3.in)
